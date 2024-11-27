@@ -1,0 +1,331 @@
+/* Estilos base */
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Loader */
+.loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease-out;
+}
+
+body.light-mode .loader-container {
+    --bg-color: rgba(248, 249, 250, 0.9);
+}
+
+body.dark-mode .loader-container {
+    --bg-color: rgba(45, 52, 54, 0.9);
+}
+
+.loader-image {
+    width: 200px;
+    height: auto;
+    animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loader-container.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Logos */
+.logo, .logonegro {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    margin-left: 320px;
+}
+
+body.light-mode .logo {
+    visibility: visible;
+}
+
+body.light-mode .logonegro {
+    visibility: hidden;
+}
+
+body.dark-mode .logo {
+    visibility: hidden;
+}
+
+body.dark-mode .logonegro {
+    visibility: visible;
+}
+
+/* Modo Claro */
+body.light-mode {
+    background-color: #f8f9fa;
+    color: #2d3436;
+}
+
+body.light-mode .controls {
+    background: rgba(45,52,54,0.1);
+}
+
+
+
+body.light-mode .explanation {
+    background-color: #2d3436;
+    color: #f8f9fa;
+}
+
+/* Modo Oscuro */
+body.dark-mode {
+    background-color: #222020;
+    color: #f8f9fa;
+}
+
+
+
+body.dark-mode .color-square,
+body.dark-mode .heptagon {
+    border: 1px solid #555;
+}
+
+body.dark-mode .explanation {
+    background-color: #555;
+    color: #f0f0f0;
+}
+
+body.dark-mode .controls {
+    background: rgba(45,52,54,0.1);
+}
+
+body.dark-mode select,
+body.dark-mode input[type="color"] {
+    background: #444;
+    color: #f8f9fa;
+    border-color: #555;
+}
+
+/* Contenedor Principal */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Títulos */
+h1 {
+    text-align: center;
+}
+
+/* Secciones de Muestras */
+.muestra-a, .muestra-b {
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: inherit;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Cuadrados de Color */
+.color-squares {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.color-square {
+    aspect-ratio: 1;
+    min-height: 120px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.color-square:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.color-square.visible {
+    opacity: 1;
+    animation: scaleIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Heptágono */
+.heptagon {
+    width: 200px;
+    height: 200px;
+    background-color: #ddd;
+    clip-path: polygon(
+        30% 0%, 70% 0%, /* Parte superior */
+        100% 30%, /* Lado derecho superior */
+        100% 70%, /* Lado derecho inferior */
+        70% 100%, /* Parte inferior derecha */
+        30% 100%, /* Parte inferior izquierda */
+        0% 70%, /* Lado izquierdo inferior */
+        0% 30% /* Lado izquierdo superior */
+    );
+    margin: 0 auto;
+}
+
+/* Controles */
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    margin: 30px 0;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.color-picker, .palette-type {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+select, input[type="color"] {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    height: 35px;
+}
+
+select {
+    min-width: 150px;
+    padding: 0 10px;
+}
+
+button {
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #656665, #656665);
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    margin: 5px;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(147, 221, 255, 0.3);
+}
+
+/* Explicación */
+.explanation {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 30px;
+    text-align: left;
+}
+
+.explanation h3 {
+    text-align: center;
+}
+
+/* Notificación personalizada */
+.notification {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 15px 25px;
+    background: rgba(45,52,54,0.95);
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    transform: translateY(100px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+.notification.show {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .color-picker, .palette-type {
+        flex: 1 1 100%;
+        margin-bottom: 10px;
+    }
+    
+    .color-squares {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .logo, .logonegro {
+        position: relative;
+        margin: 20px auto;
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+}

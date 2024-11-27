@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorific</title>
+    <link rel="shortcut icon" type="image/png" href="DRAGO_VECTOR.png">
+    <link rel="stylesheet" href="ola.css">
+
+</head>
+<body class="light-mode">
+    <div class="loader-container">
+        <img src="DRAGO_VECTOR.png" class="loader-image" alt="Loading...">
+    </div>
+    <div class="container">
+        <img class="logo" src="../DISEÑO/a1.png" alt=""><img class="logonegro" src="../DISEÑO/a2.png" alt="">
+        <center>
+            <h1>COLORIFIC</h1>
+        </center>
+        <div class="muestra-a">
+            <h2>MUESTRA A</h2>
+            <div class="color-squares">
+                <div id="color1" class="color-square"></div>
+                <div id="color2" class="color-square"></div>
+                <div id="color3" class="color-square"></div>
+                <div id="color4" class="color-square"></div>
+            </div>
+        </div>
+        <div class="muestra-b">
+            <h2>MUESTRA B</h2>
+            <div id="heptagon" class="heptagon"></div>
+        </div>
+        <div class="controls">
+            <div class="color-picker">
+                <label for="baseColor">Color base:</label>
+                <input type="color" id="baseColor">
+            </div>
+            <div class="palette-type">
+                <label for="paletteType">Tipo de paleta:</label>
+                <select id="paletteType">
+                    <option value="complementary">Complementarios</option>
+                    <option value="triadic">Tríada</option>
+                    <option value="analogous">Análogos</option>
+                    <option value="pastel">Tonos Pastel</option>
+                </select>
+            </div>
+            <button id="generateButton">Generar Paleta</button>
+            <button id="toggleTheme">Cambiar Tema</button>
+        </div>
+        <div class="explanation">
+            <h3>Cómo usar el generador de paletas</h3>
+            <ol>
+                <li>Seleccione un color base usando el selector de color.</li>
+                <li>Elija el tipo de paleta que desea generar.</li>
+                <li>Haga clic en "Generar Paleta" para ver los resultados.</li>
+                <li>Haga clic en un cuadro de color para copiar el valor en CMYK.</li>
+            </ol>
+        </div>
+    </div>
+    <script src="ola.js"></script>
+</body>
+</html>
